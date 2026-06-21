@@ -4,192 +4,383 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Cairo', sans-serif;
     line-height: 1.6;
     color: #333;
-    background-color: #f4f4f4;
+    background-color: #f9f9f9;
 }
 
 .container {
-    width: 80%;
-    margin: auto;
-    overflow: hidden;
-    padding: 20px 0;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 0;
 }
 
-header {
-    background: #2e7d32;
-    color: #fff;
-    padding-top: 10px;
-    min-height: 70px;
-    border-bottom: #1b5e20 3px solid;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-}
-
-header nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 80%;
-    margin: auto;
-    padding: 10px 0;
-}
-
-header .logo {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-header ul {
-    display: flex;
-    list-style: none;
-}
-
-header li {
-    padding: 0 20px;
-}
-
-header a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 18px;
-}
-
-header a:hover {
-    color: #a5d6a7;
-}
-
+/* Hero Section */
 .hero {
+    position: relative;
     height: 100vh;
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background: url('https://images.unsplash.com/photo-1574943320219-553eb213f72d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: #fff;
-    padding-top: 70px;
+    overflow: hidden;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 40px;
 }
 
 .hero-content h1 {
-    font-size: 60px;
-    margin-bottom: 10px;
+    font-size: 48px;
+    font-weight: 900;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
 }
 
 .hero-content h2 {
-    font-size: 30px;
-    margin-bottom: 20px;
+    font-size: 64px;
+    font-weight: 900;
+    margin-bottom: 30px;
     color: #a5d6a7;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
 }
 
 .hero-content p {
     font-size: 20px;
-    margin-bottom: 30px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-bottom: 40px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .btn {
     display: inline-block;
-    background: #2e7d32;
-    color: #fff;
-    padding: 10px 30px;
+    padding: 12px 30px;
     text-decoration: none;
     border-radius: 5px;
-    font-size: 18px;
+    font-size: 16px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
 }
 
-.btn:hover {
+.btn-primary {
+    background: #2e7d32;
+    color: #fff;
+}
+
+.btn-primary:hover {
     background: #1b5e20;
+    transform: translateY(-2px);
 }
 
-section {
-    padding: 80px 0;
+.btn-secondary {
+    background: transparent;
+    color: #fff;
+    border: 2px solid #fff;
 }
 
-h2 {
-    text-align: center;
-    margin-bottom: 40px;
-    font-size: 36px;
+.btn-secondary:hover {
+    background: #fff;
     color: #2e7d32;
 }
 
-.about {
-    background: #fff;
-    text-align: center;
+.btn-large {
+    padding: 15px 40px;
+    font-size: 18px;
 }
 
+.hero-icons {
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 0 20px;
+}
+
+.icon-box {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    flex: 1;
+    min-width: 200px;
+    max-width: 250px;
+}
+
+.icon {
+    font-size: 40px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.icon-box p {
+    font-size: 14px;
+    color: #fff;
+}
+
+/* Products Section */
 .products {
     background: #e8f5e9;
+    padding: 80px 0;
 }
 
-.product-grid {
+.products h2 {
+    text-align: center;
+    font-size: 40px;
+    color: #2e7d32;
+    margin-bottom: 60px;
+}
+
+.products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
 }
 
 .product-card {
     background: #fff;
-    padding: 20px;
+    padding: 40px;
     border-radius: 10px;
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.product-icon {
+    font-size: 60px;
+    margin-bottom: 20px;
 }
 
 .product-card h3 {
-    margin-bottom: 15px;
     color: #2e7d32;
+    margin-bottom: 15px;
+    font-size: 22px;
 }
 
-.contact {
+.product-card p {
+    color: #666;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+/* FAQ Section */
+.faq {
     background: #fff;
+    padding: 80px 0;
 }
 
-.contact form {
-    max-width: 600px;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
+.faq h2 {
+    text-align: center;
+    font-size: 40px;
+    color: #2e7d32;
+    margin-bottom: 60px;
 }
 
-.contact input, .contact textarea {
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.faq-item {
+    background: #f0f7f0;
+    padding: 30px;
+    border-radius: 10px;
+    border-right: 4px solid #2e7d32;
+}
+
+.faq-item h3 {
+    color: #2e7d32;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.faq-item p {
+    color: #666;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+/* Contact Section */
+.contact {
+    background: #e8f5e9;
+    padding: 80px 0;
+}
+
+.contact h2 {
+    text-align: center;
+    font-size: 40px;
+    color: #2e7d32;
+    margin-bottom: 60px;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.contact-item {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.contact-item h3 {
+    color: #2e7d32;
     margin-bottom: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-family: inherit;
+    font-size: 20px;
 }
 
-.contact button {
-    border: none;
-    cursor: pointer;
+.contact-item p {
+    margin-bottom: 10px;
 }
 
+.contact-item a {
+    color: #2e7d32;
+    text-decoration: none;
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+.contact-item a:hover {
+    color: #1b5e20;
+    text-decoration: underline;
+}
+
+.cta-button {
+    text-align: center;
+    padding: 40px;
+}
+
+.cta-button .btn {
+    background: #2e7d32;
+    color: #fff;
+    padding: 15px 50px;
+    font-size: 18px;
+}
+
+/* Footer */
 footer {
     background: #2e7d32;
     color: #fff;
     text-align: center;
-    padding: 20px 0;
+    padding: 30px 0;
 }
 
+footer p {
+    margin: 10px 0;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-    header nav {
-        flex-direction: column;
-    }
-    header ul {
-        margin-top: 20px;
-    }
     .hero-content h1 {
+        font-size: 32px;
+    }
+
+    .hero-content h2 {
         font-size: 40px;
     }
+
+    .hero-content p {
+        font-size: 16px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .hero-icons {
+        flex-direction: column;
+        bottom: 20px;
+    }
+
+    .icon-box {
+        min-width: 100%;
+    }
+
+    .products h2,
+    .faq h2,
+    .contact h2 {
+        font-size: 30px;
+    }
+
+    .products-grid,
+    .faq-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        padding: 30px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 24px;
+    }
+
     .hero-content h2 {
-        font-size: 20px;
+        font-size: 32px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    .icon-box {
+        padding: 15px;
+    }
+
+    .icon {
+        font-size: 30px;
     }
 }
